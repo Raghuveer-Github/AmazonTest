@@ -11,7 +11,21 @@ import GenericLibrary.BaseClass;
 public class DashboardFeatures extends BaseClass {
 			
 	@Test
-	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	public void dashbordTest() throws Throwable{
+
+
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		
+
+		wait.until(ExpectedConditions.titleContains("Shop Online for Mobiles, Books, Watches, Shoes and More - Amazon.in"));
+
+		String actualTitle = driver.getTitle();
+		System.out.println("Page Title:" + actualTitle);
+		Thread.sleep(2000);
+
+		// Assertion - Adjust expected title as per the real title
+		Assert.assertTrue(actualTitle.contains("Shop Online for Mobiles, Books, Watches, Shoes and More - Amazon.in"), "Title does not contain expected text.");
+	
 
 		WebElement hamburgerMenu = wait.until(ExpectedConditions.elementToBeClickable(By.id("nav-hamburger-menu")));
 		Thread.sleep(2000);
@@ -21,17 +35,6 @@ public class DashboardFeatures extends BaseClass {
 		//		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true)", mobilesComputers);
 		mobilesComputers.click();
 		Thread.sleep(2000);
-
-
-//		wait.until(ExpectedConditions.titleContains("Shop Online for Mobiles, Books, Watches, Shoes and More - Amazon.in"));
-//
-//		String actualTitle = driver.getTitle();
-//		System.out.println("Page Title:" + actualTitle);
-//		Thread.sleep(2000);
-
-		// Assertion - Adjust expected title as per the real title
-//		Assert.assertTrue(actualTitle.contains("Shop Online for Mobiles, Books, Watches, Shoes and More - Amazon.in"), "Title does not contain expected text.");
-		
 	
 		// Wait for "All Mobile Phones" to become visible and clickable
 		WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -72,7 +75,7 @@ public class DashboardFeatures extends BaseClass {
 			closePopup.click();
 			Thread.sleep(1000);
 		} catch (Exception e) {
-			System.out.println("No close button appeared.");//[@data-asin='B0CHX1W1XY']//img[@alt='Apple iPhone 15 (128 GB) - Black']
+			System.out.println("No close button appeared.");
 		}
 
 
@@ -84,8 +87,8 @@ public class DashboardFeatures extends BaseClass {
 		WebElement removeFromCart= driver.findElement(By.xpath("//fieldset[@data-decrementlabel='Delete OnePlus 13 | Smarter with OnePlus AI | Lifetime Display Warranty (12GB RAM, 256GB Storage Black Eclipse)']//span[@class='a-icon a-icon-small-trash']"));
 		removeFromCart.click();
 		Thread.sleep(2000);
-
 	}
 
 }
+
 
